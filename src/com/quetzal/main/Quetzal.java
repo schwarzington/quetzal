@@ -1,50 +1,26 @@
 package com.quetzal.main;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import java.io.IOException;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import com.quetzal.player.Player;
+import com.quetzal.player.util.PlayerUtil;
 
 public class Quetzal {
 	public static void main(String[] args) throws IOException {
-		String url = "http://fftoolbox.scout.com/football/depth-charts.cfm";
-		print("Fetching %s...", url);
-
-		Document doc = Jsoup.connect(url).get();
-		Elements teams = doc.select("div.team");
-
-		print("\nTeams: (%d)", teams.size());
-		for (Element team : teams) {
-			for (Element player : team.select("ul > li")) {
-				print("Position: " + player.text().split(" ")[0]
-						+ " Player Name: " + player.text().split(" ")[1] + " "
-						+ player.text().split(" ")[2]);
-			}
+		ArrayList<String> positions = new ArrayList<String>();
+		positions.add("QB1");
+		positions.add("RB1");
+		
+		ArrayList<Player> allPlayers = PlayerUtil.populatePlayers();
+		ArrayList<Player> allPlayersByPosition = PlayerUtil.populatePlayersByPosition(positions);
+		for(int i=0; i <allPlayers.size(); i++){
+			System.out.println(allPlayers.get(i).toString());
 		}
-	}
-
-	private static void print(String msg, Object... args) {
-		System.out.println(String.format(msg, args));
-	}
-
-	private static String trim(String s, int width) {
-		if (s.length() > width)
-			return s.substring(0, width - 1) + ".";
-		else
-			return s;
+		System.out.println("*********************************");
+		for(int i=0; i <allPlayersByPosition.size(); i++){
+			System.out.println(allPlayersByPosition.get(i).toString());
+		}
 	}
 }
