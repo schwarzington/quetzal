@@ -16,12 +16,18 @@ public class Player implements Comparable<Player> {
 			
 			try {
 				player1 = o1.getDk_cpp();
+				if(player1 < 0.00){
+					player1 = 0.00;
+				}
 			} catch(NullPointerException e){
 				player1 = 0.00;
 			}
 			
 			try {
 				player2 = o2.getDk_cpp();
+				if(player2 < 0.00){
+					player2 = 0.00;
+				}
 			} catch(NullPointerException e){
 				player2 = 0.00;
 			}

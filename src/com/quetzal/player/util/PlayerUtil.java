@@ -55,7 +55,27 @@ public class PlayerUtil {
 				}
 			}
 		}
+		
+		//This is a special section for the Defenses
+		if(positions.contains("DST") || positions.get(0) == "ALL")
+		{
+			String[] teamNames = {"Ravens", "Cardinals", "Bills", "Falcons", "Bengals", "Panthers", "Browns", "Bears", "Broncos", "Cowboys", "Texans", "Lions", "Colts", "Packers", "Jaguars", "Vikings", "Chiefs", "Saints", "Dolphins", "Giants", "Patriots", "Eagles", "Jets", "Rams", "Raiders", "49ers", "Steelers", "Seahawks", "Chargers", "Buccaneers", "Titans", "Redskins"};
+			for(int i = 0; i < teamNames.length; i++){
+				Player player = new Player(teamNames[i], "", "DST", teamNames[i],teamNames[i]);
+				try {
+					ArrayList<String> playerDKInfo = draftKingsMap
+							.get(player.getFull_name());
+					player.setDk_cost(Long.parseLong(playerDKInfo.get(0)));
+					player.setDk_avg_points(Double.parseDouble(playerDKInfo
+							.get(1)));
+					player.setDk_cpp(player.getDk_cost()
+							/ player.getDk_avg_points());
+					players.add(player);
+				} catch (NullPointerException e) {
 
+				}
+			}
+		}
 		return players;
 	}
 
