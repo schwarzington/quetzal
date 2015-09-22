@@ -7,7 +7,7 @@ import com.quetzal.player.Player;
 public class Lineup {
 	private Player qb, rb1, rb2, wr1, wr2, wr3, te, flex, dst;
 	public Lineup(){
-		Player dummyPlayer = new Player("Dummy", "Player", "NULL", "NONE", "ABB");
+		Player dummyPlayer = new Player("Dummy", "Player", "NULL", "NONE", "ABB", "00000");
 		dummyPlayer.setDk_cost((long) 0);
 		dummyPlayer.setDk_cpp(0.00);
 		dummyPlayer.setDk_avg_points(0.00);

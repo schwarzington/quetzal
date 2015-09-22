@@ -23,6 +23,7 @@ public class DraftKingsUtil {
 					 ArrayList<String> info = new ArrayList<String>();
 					 info.add(csvRecord.get(2));
 					 info.add(csvRecord.get(4));
+					 info.add(csvRecord.get(3).split(" ")[0].replace(csvRecord.get(5), "").replace("@", "").trim().toUpperCase());
 					 dkMap.put(csvRecord.get(1), info);
 				 }
 			return dkMap;

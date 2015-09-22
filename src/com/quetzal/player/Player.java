@@ -4,8 +4,8 @@ import java.util.Comparator;
 
 public class Player implements Comparable<Player> {
 	private String first_name, last_name, position, fd_cost, team, teamAbb,
-			full_name;
-	private Double dk_avg_points, dk_cpp;
+			full_name, player_id, opponentAbb;
+	private Double dk_avg_points, dk_cpp, historical_avg_vs_opp;
 	private Long dk_cost;
 
 	public static final Comparator<Player> CostPerPointComparator = new Comparator<Player>() {
@@ -36,13 +36,38 @@ public class Player implements Comparable<Player> {
 	};
 
 	public Player(String first, String last, String pos, String team_name,
-			String abbreviation) {
+			String abbreviation, String playerId) {
 		this.first_name = first.trim();
 		this.last_name = last.trim();
 		this.position = pos.trim();
 		this.team = team_name.trim();
 		this.teamAbb = abbreviation.trim();
+		this.player_id = playerId.trim();
 		this.full_name = first_name + " " + last_name;
+	}
+
+	public Double getHistorical_avg_vs_opp() {
+		return historical_avg_vs_opp;
+	}
+
+	public void setHistorical_avg_vs_opp(Double historical_avg_vs_opp) {
+		this.historical_avg_vs_opp = historical_avg_vs_opp;
+	}
+
+	public String getPlayer_id() {
+		return player_id;
+	}
+
+	public void setPlayer_id(String player_id) {
+		this.player_id = player_id;
+	}
+
+	public String getOpponentAbb() {
+		return opponentAbb;
+	}
+
+	public void setOpponentAbb(String opponentAbb) {
+		this.opponentAbb = opponentAbb;
 	}
 
 	public Double getDk_cpp() {
@@ -86,10 +111,10 @@ public class Player implements Comparable<Player> {
 	}
 
 	public String toString() {
-		return first_name + " " + last_name + " plays " + position
+		return "ID: " + player_id + " " + first_name + " " + last_name + " plays " + position
 				+ " for the " + team + " (" + teamAbb
 				+ ") at a DraftKings cost of " + dk_cost + " averaging "
-				+ dk_avg_points + " at a Cost Per Point " + dk_cpp;
+				+ dk_avg_points + " at a Cost Per Point " + dk_cpp + " playing " + opponentAbb + " with a historical avg fantasy points of " + historical_avg_vs_opp;
 	}
 
 	public String getFirst_name() {

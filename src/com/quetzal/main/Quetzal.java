@@ -11,7 +11,7 @@ import com.quetzal.player.util.PlayerUtil;
 public class Quetzal {
 public static void main(String[] args) throws IOException {
 	ArrayList<String> positions = new ArrayList<String>();
-		positions.add("ALL");
+		positions.add("QB1");
 		ArrayList<Player> allPlayers = PlayerUtil.populatePlayers(positions);
 		Collections.sort(allPlayers, Player.CostPerPointComparator);
 		for(int i=0; i <allPlayers.size(); i++){
